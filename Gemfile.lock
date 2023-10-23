@@ -85,9 +85,10 @@ GEM
     bindex (0.8.1)
     bootsnap (1.16.0)
       msgpack (~> 1.2)
-    bootstrap-sass (3.4.1)
-      autoprefixer-rails (>= 5.2.1)
-      sassc (>= 2.0.0)
+    bootstrap (5.3.1)
+      autoprefixer-rails (>= 9.1.0)
+      popper_js (>= 2.11.8, < 3)
+      sassc-rails (>= 2.0.0)
     builder (3.2.4)
     byebug (11.1.3)
     capybara (3.39.2)
@@ -178,6 +179,8 @@ GEM
       webrick (~> 1.7)
       websocket-driver (>= 0.6, < 0.8)
     ffi (1.16.3)
+    font-awesome-sass (6.4.2)
+      sassc (~> 2.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
     i18n (1.14.1)
@@ -232,6 +235,7 @@ GEM
     parser (3.2.2.4)
       ast (~> 2.4.1)
       racc
+    popper_js (2.11.8)
     psych (5.1.1.1)
       stringio
     public_suffix (5.0.3)
@@ -400,7 +404,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap
-  bootstrap-sass
+  bootstrap (~> 5.3.1)
   byebug
   capybara
   capybara-email
@@ -412,6 +416,7 @@ DEPENDENCIES
   devise (~> 4.9)
   factory_bot_rails
   faker
+  font-awesome-sass (~> 6.4.2)
   importmap-rails
   jbuilder
   puma (~> 6.0)

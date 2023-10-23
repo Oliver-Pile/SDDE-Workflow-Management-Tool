@@ -1,6 +1,14 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @project %>
+<p>
+  <strong>Title:</strong>
+  <%= @project.title %>
+</p>
+
+<p>
+  <strong>Department:</strong>
+  <%= @project.department %>
+</p>
 
 <div>
   <%= link_to "Edit this project", edit_project_path(@project) %> |

@@ -1,12 +1,14 @@
-<div id="<%= dom_id project %>">
-  <p>
-    <strong>Title:</strong>
-    <%= project.title %>
-  </p>
-
-  <p>
-    <strong>Department:</strong>
-    <%= project.department %>
-  </p>
-
-</div>
+  <div class="col py-2">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title"> 
+        <%= project.title %>
+        <%= link_to icon('fa-solid', 'pen-to-square'), edit_project_path(project) %>
+        </h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <strong>Department:</strong>
+      <%= project.department %><br>
+      <%= link_to "Show this project", project %>
+      </div>
+    </div>
+  </div>
