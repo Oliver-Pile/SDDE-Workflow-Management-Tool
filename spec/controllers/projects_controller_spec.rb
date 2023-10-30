@@ -23,7 +23,6 @@ describe ProjectsController do
            params: { project: {title: "title", description: "description!", department: "Ops" }}
     end
 
-
       it 'creates a project' do
         subject
         expect(Project.count).to be(1)
@@ -46,6 +45,26 @@ describe ProjectsController do
 
       it "redirects to the projects index page" do
         expect(subject).to redirect_to(project_url(Project.last))
+      end
+    end
+
+    describe 'PATCH update' do
+      subject do
+        put :update, params: { id: project.id, project: { title: 'foo', description: 'bar', department: 'baz' } }
+      end
+
+      let!(:project) { create(:project) }
+
+      it 'updates the title of the project' do
+        expect { subject }.to change { project.reload.title }.to('foo')
+      end
+
+      it 'updates the description of the project' do
+        expect { subject }.to change { project.reload.description }.to('bar')
+      end
+
+      it 'updates the department of the project' do
+        expect { subject }.to change { project.reload.department }.to('baz')
       end
     end
 end
