@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_10_23_152053) do
+ActiveRecord::Schema[7.1].define(version: 2023_10_30_143210) do
+  create_table "cards", force: :cascade do |t|
+    t.string "content"
+    t.string "status"
+    t.integer "project_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_cards_on_project_id"
+  end
+
   create_table "projects", force: :cascade do |t|
     t.string "title"
     t.string "department"
@@ -20,4 +29,5 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_23_152053) do
     t.index ["title"], name: "index_projects_on_title", unique: true
   end
 
+  add_foreign_key "cards", "projects"
 end
