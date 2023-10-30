@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Project, type: :model do
+  it 'can have many cards' do
+    expect(subject).to have_many(:cards)
+  end
+
   it 'validates the presence of title' do
     expect(subject).to validate_presence_of(:title)
   end

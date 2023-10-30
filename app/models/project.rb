@@ -4,4 +4,5 @@ class Project < ApplicationRecord
                    length: { maximum: 128 }
   validates :description, presence: true, length: { maximum: 500 }
   validates :department, presence: true
+  has_many :cards, dependent: :destroy
 end

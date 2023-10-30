@@ -2,11 +2,10 @@
 
 require 'rails_helper'
 describe ProjectsController do
+  let!(:project) { create(:project) }
 
   describe 'GET #index' do
-    let!(:project) { create(:project) }
-
-    it 'assigns @kanbans' do
+    it 'assigns @projects' do
       get :index
       expect(assigns(:projects)).to eq([project])
     end
@@ -17,6 +16,21 @@ describe ProjectsController do
     end
   end
 
+  describe 'GET #show' do
+    let!(:card) { create(:card, project: project)}
+    subject { get :show, params: { id: project.id } }
+
+    it 'assigns @cards' do
+      subject
+      expect(assigns(:cards)).to eq([card])
+    end
+
+    it 'assigns @project' do
+      subject
+      expect(assigns(:project)).to eq(project)
+    end
+  end
+
   describe 'POST create' do
     subject do
       post :create,
@@ -24,8 +38,7 @@ describe ProjectsController do
     end
 
       it 'creates a project' do
-        subject
-        expect(Project.count).to be(1)
+        expect { subject }.to change { Project.count }.by(1)
       end
 
       it 'has the correct title' do

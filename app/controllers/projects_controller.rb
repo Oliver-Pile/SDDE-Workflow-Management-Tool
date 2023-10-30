@@ -1,13 +1,14 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: %i[ show edit update destroy ]
 
-  # GET /projects or /projects.json
+  # GET /projects
   def index
     @projects = Project.all
   end
 
-  # GET /projects/1 or /projects/1.json
+  # GET /projects/1
   def show
+    @cards = @project.cards
   end
 
   # GET /projects/new
@@ -19,7 +20,7 @@ class ProjectsController < ApplicationController
   def edit
   end
 
-  # POST /projects or /projects.json
+  # POST /projects
   def create
     @project = Project.new(project_params)
 
@@ -30,7 +31,7 @@ class ProjectsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /projects/1 or /projects/1.json
+  # PATCH/PUT /projects/1
   def update
       if @project.update(project_params)
         redirect_to project_url(@project), notice: "Project was successfully updated."
@@ -39,7 +40,7 @@ class ProjectsController < ApplicationController
       end
   end
 
-  # DELETE /projects/1 or /projects/1.json
+  # DELETE /projects/1
   def destroy
     @project.destroy!
 

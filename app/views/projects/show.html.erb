@@ -10,6 +10,12 @@
   <%= @project.department %>
 </p>
 
+<h2> Cards </h2>
+  <% @cards.each do |card| %>
+    <div>
+      <%= card.content %>
+    </div>
+  <% end %>
 <div>
   <%= link_to "Edit this project", edit_project_path(@project) %> |
   <%= link_to "Back to projects", projects_path %>
