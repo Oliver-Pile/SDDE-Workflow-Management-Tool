@@ -16,4 +16,10 @@ RSpec.describe Card, type: :model do
   it 'validates status cant be set to a random value' do
     expect(subject).not_to allow_value('foo').for(:status)
   end
+
+  describe '#valid_status' do
+    it 'returns a list of valid card status values' do
+      expect(Card.valid_status).to eq ["Backlog", "Ready", "In Progress", "Completed"]
+    end
+  end
 end
