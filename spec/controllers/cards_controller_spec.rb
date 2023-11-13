@@ -20,4 +20,30 @@ describe CardsController do
     end
   end
 
+  describe 'POST create' do
+    subject do
+      post :create,
+           params: { project_id: project.id, card: { content: "foo bar baz", status: "Backlog" }}
+    end
+
+    let(:project) { create(:project) }
+
+      it 'creates a card' do
+        expect { subject }.to change { Card.count }.by(1)
+      end
+
+      it 'has the correct content' do
+        subject
+        expect(Card.last.content).to eq('foo bar baz')
+      end
+
+      it 'has the correct status' do
+        subject
+        expect(Card.last.status).to eq('Backlog')
+      end
+
+      it "redirects to the projects show page" do
+        expect(subject).to redirect_to(project_url(project))
+      end
+    end
 end
