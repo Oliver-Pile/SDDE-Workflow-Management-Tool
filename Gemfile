@@ -48,7 +48,7 @@ gem "sassc-rails"
 # gem "image_processing", "~> 1.2"
 
 gem "devise", "~> 4.9"
-gem 'bootstrap', '~> 5.3.1'
+gem 'bootstrap', '~> 5.3.2'
 gem "font-awesome-sass", "~> 6.4.2"
 
 group :development, :test do

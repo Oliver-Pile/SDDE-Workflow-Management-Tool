@@ -14,7 +14,8 @@ class CardsController < ApplicationController
     @card = @project.cards.build(card_params)
 
     if @card.save
-      redirect_to project_url(@project), notice: "Card was successfully created."
+      flash[:success] = 'Card saved successfully'
+      redirect_to project_url(@project)
     else
       render :new, status: :unprocessable_entity
     end
