@@ -1,13 +1,6 @@
 <% flash.each do |key, value| %>
-  <% if key == "success"%>
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-      <%= value %>
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-  <% else %>
-    <div class="alert alert-danger" role="alert">
-      <%= value %>
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-  <% end %>
+  <div class="alert alert-<%=key%> alert-dismissible fade show" role="alert">
+    <%= value %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
 <% end %>
