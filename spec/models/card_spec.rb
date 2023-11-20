@@ -26,4 +26,17 @@ RSpec.describe Card, type: :model do
       expect(Card.valid_status).to eq ["Backlog", "Ready", "In Progress", "Completed"]
     end
   end
+
+  describe '#user_names' do
+  let(:project) { create :project }
+  let(:card) { create :card, project: project }
+  let(:user1) { create :user }
+  let(:user2) { create :user }
+
+  it 'returns the user names' do
+    card.users << user1
+    card.users << user2
+    expect(card.user_names).to eq card.users.pluck(:username).join(', ')
+  end
+end
 end

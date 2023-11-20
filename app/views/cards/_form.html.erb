@@ -22,6 +22,11 @@
   </div>
 
   <div>
+    <%= form.label :user_ids, "Users", style: "display: block" %>
+    <%= form.select :user_ids, @users.map { |u| [u.username, u.id] }, { multiple: true } %>
+  </div>
+
+  <div>
     <%= form.submit %>
   </div>
 <% end %>

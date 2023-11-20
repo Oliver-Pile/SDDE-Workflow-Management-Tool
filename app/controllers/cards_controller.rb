@@ -9,6 +9,7 @@ class CardsController < ApplicationController
   def new
     @card = Card.new
     @project = Project.find(params[:project_id])
+    @users = User.all
   end
 
   def create
@@ -24,6 +25,7 @@ class CardsController < ApplicationController
   end
 
   def edit
+    @users = User.all
   end
 
   def update
@@ -45,6 +47,6 @@ end
   end
 
   def card_params
-    params.require(:card).permit(:content, :status)
+    params.require(:card).permit(:content, :status, user_ids: [])
   end
 end

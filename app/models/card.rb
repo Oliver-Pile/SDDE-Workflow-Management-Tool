@@ -8,4 +8,8 @@ class Card < ApplicationRecord
   def self.valid_status 
     VALID_CARD_STATUS
   end
+
+  def user_names
+    users.pluck(:username).join(', ')
+  end
 end

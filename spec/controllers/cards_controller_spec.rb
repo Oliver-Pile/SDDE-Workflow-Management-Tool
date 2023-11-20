@@ -30,7 +30,7 @@ describe CardsController do
   describe 'POST create' do
     subject do
       post :create,
-           params: { project_id: project.id, card: { content: "foo bar baz", status: "Backlog" }}
+           params: { project_id: project.id, card: { content: "foo bar baz", status: "Backlog", user_ids: [current_user.id] }}
     end
 
     let(:project) { create(:project) }
@@ -49,6 +49,11 @@ describe CardsController do
         expect(Card.last.status).to eq('Backlog')
       end
 
+      it 'has the correct users' do
+        subject
+        expect(Card.last.users).to eq([current_user])
+      end
+
       it "redirects to the projects show page" do
         expect(subject).to redirect_to(project_url(project))
       end
@@ -56,7 +61,7 @@ describe CardsController do
 
     describe "PATCH update" do
       subject do
-        put :update, params: { project_id: project.id, id: card.id, card: { content: 'foo', status: "Completed" } }
+        put :update, params: { project_id: project.id, id: card.id, card: { content: 'foo', status: "Completed", user_ids: [current_user.id] } }
       end
 
       let(:project) { create(:project) }
@@ -68,6 +73,11 @@ describe CardsController do
   
       it 'updates the status of the card' do
         expect { subject }.to change { card.reload.status }.to('Completed')
+      end
+
+      it 'has the correct users' do
+        subject
+        expect { subject }.to change { card.reload.users }.to([current_user])
       end
   
       it "redirects to the card's project page" do
