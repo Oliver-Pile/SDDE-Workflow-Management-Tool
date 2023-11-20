@@ -1,0 +1,23 @@
+<header>
+  <nav class="navbar navbar-expand-lg mb-4">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-
+        controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbar">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <%= button_to "Home", projects_path %>
+          </li>
+          <% if user_signed_in? %>
+            <li class="nav-item">
+              <%= button_to "Log out", destroy_user_session_path, method: :delete%>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
