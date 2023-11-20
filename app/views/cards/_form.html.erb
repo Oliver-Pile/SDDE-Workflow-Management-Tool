@@ -1,4 +1,4 @@
-<%= form_with(model: [:project, @card]) do |form| %>
+<%= form_with(model: [project, card], local: true) do |form| %>
   <% if @card.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(@card.errors.count, "error") %> prohibited this project from being saved:</h2>

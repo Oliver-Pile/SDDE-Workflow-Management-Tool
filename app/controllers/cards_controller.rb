@@ -1,8 +1,9 @@
 class CardsController < ApplicationController
   before_action :authenticate_user!
-  
+  before_action :set_project
+  before_action :set_card, only: [:show, :edit, :update]
+
   def show
-    @card = Card.find(params[:id])
   end
 
   def new
@@ -22,7 +23,27 @@ class CardsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @card.update(card_params)
+      flash[:success] = 'Card was successfully updated'
+      redirect_to project_url(@project)
+    else
+      render :edit, status: :unprocessable_entity
+    end
+end
+
   private
+  def set_project
+    @project = Project.find(params[:project_id])
+  end
+
+  def set_card
+    @card = @project.cards.find(params[:id])
+  end
+
   def card_params
     params.require(:card).permit(:content, :status)
   end

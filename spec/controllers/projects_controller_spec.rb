@@ -2,6 +2,11 @@
 
 require 'rails_helper'
 describe ProjectsController do
+  before do
+    login_user current_user
+    allow(controller).to receive(:current_user).and_return(current_user)
+  end
+  let!(:current_user) { create(:user) }
   let!(:project) { create(:project) }
 
   describe 'GET #index' do
