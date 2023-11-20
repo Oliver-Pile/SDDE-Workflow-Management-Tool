@@ -1,0 +1,23 @@
+<h1>Users</h1>
+
+<div id="users">
+  <div class="container-fluid text-center">
+    <table>
+    <thead>
+    <th> Email </th>
+    <th> Username </th>
+    <th> Created at </th>
+    </thead>
+    <tbody>
+    <% @users.each do |user| %>
+    <tr>
+      <td> <%= user.email %> </td>
+      <td> <%= user.username %> </td>
+      <td> <%= user.created_at %> </td>
+    </tr>
+    <% end %>
+    </tbody>
+    </table>    
+  </div>
+</div>
+

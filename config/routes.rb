@@ -11,4 +11,6 @@ Rails.application.routes.draw do
   resources :projects do
     resources :cards
   end
+
+  resources :manage_users
 end
