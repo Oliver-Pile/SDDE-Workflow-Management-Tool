@@ -1,9 +1,9 @@
-<h1>Editing Card</h1>
+<header class="project-header"> 
+  <h1>Update Card</h1>
+  <div class="project-links">
+    <%= link_to "Back to Cards", project_path(@project), class: "btn btn-primary m-2" %>
+  </div>
+</header>
 
 <%= render "form", card: @card, project: @project, users: @users %>
 
-<br>
-
-<div>
-  <%= link_to "Back to Cards", project_path(@project) %>
-</div>
