@@ -1,8 +1,13 @@
 <h1>Users</h1>
+<%= render 'add_user'%>
+
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addUserModal">
+  Add user
+</button>
 
 <div id="users">
   <div class="container-fluid text-center">
-    <table class='table'>
+    <table class="table">
     <thead>
     <th> Email </th>
     <th> Username </th>

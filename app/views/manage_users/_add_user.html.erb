@@ -1,0 +1,38 @@
+<div class="modal" tabindex="-1" id="addUserModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add user</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <%= form_with(url: registration_path(@user)) do |form| %>
+      <div class="modal-body">
+          <% if @user.errors.any? %>
+            <div style="color: red">
+              <h2><%= pluralize(@user.errors.count, "error") %> prohibited this project from being saved:</h2>
+              <ul>
+                <% @user.errors.each do |error| %>
+                  <li><%= error.full_message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+
+        <div>
+          <%= form.label :email, style: "display: block" %>
+          <%= form.text_field :email %>
+        </div>
+
+        <div>
+          <%= form.label :username, style: "display: block" %>
+          <%= form.text_field :username %>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">Add</button>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</div>
