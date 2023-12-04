@@ -1,60 +1,47 @@
-<p>
-  <strong>Title:</strong>
-  <%= @project.title %>
-</p>
 
-<p>
-  <strong>Department:</strong>
-  <%= @project.department %>
-</p>
-
-<div>
-    <div class="container-fluid ">
-  <h2> Cards </h2>
-      <div class="backlog-cards">
-        <h3>Backlog</h3>
-        <div class="row">
-          <% @cards.backlog.each do |card| %>
-            <%= render "cards/card", card: card %>
-          <% end %>
-        </div>
-      </div>
-
-      <div class="ready-cards">
-        <h3>Ready</h3>
-        <div class="row">
-          <% @cards.ready.each do |card| %>
-            <%= render "cards/card", card: card %>
-          <% end %>
-        </div>
-      </div>
-
-      <div class="in_progress-cards">
-        <h3>In Progress</h3>
-        <div class="row">
-          <% @cards.in_progress.each do |card| %>
-            <%= render "cards/card", card: card %>
-          <% end %>
-        </div>
-      </div>
-
-      <div class="complete-cards">
-        <h3>Complete</h3>
-        <div class="row">
-          <% @cards.completed.each do |card| %>
-            <%= render "cards/card", card: card %>
-          <% end %>
-        </div>
-      </div>
-
-
+<header class="project-header"> 
+  <h2> <%= @project.title %> </h2>
+  <div class="project-links">
+    <%= link_to "Add Card", new_project_card_path(@project), class: "btn btn-primary m-2"%>
+    <%= link_to "Edit this project", edit_project_path(@project), class: "btn btn-primary m-2" %>
+    <%= link_to "Back to projects", projects_path, class: "btn btn-primary m-2" %>
+    <%= button_to "Archive this project", @project, method: :delete, class: "btn btn-danger m-2" %>
+  </div>
+</header>
+<div class>
+  <div class="backlog-cards">
+    <h3>Backlog</h3>
+    <div class="row">
+      <% @cards.backlog.each do |card| %>
+        <%= render "cards/card", card: card %>
+      <% end %>
     </div>
   </div>
 
-<div>
-  <%= link_to "New Card", new_project_card_path(@project) %> |
-  <%= link_to "Edit this project", edit_project_path(@project) %> |
-  <%= link_to "Back to projects", projects_path %>
+  <div class="ready-cards">
+    <h3>Ready</h3>
+    <div class="row">
+      <% @cards.ready.each do |card| %>
+        <%= render "cards/card", card: card %>
+      <% end %>
+    </div>
+  </div>
 
-  <%= button_to "Destroy this project", @project, method: :delete %>
+  <div class="in_progress-cards">
+    <h3>In Progress</h3>
+    <div class="row">
+      <% @cards.in_progress.each do |card| %>
+        <%= render "cards/card", card: card %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="complete-cards">
+    <h3>Complete</h3>
+    <div class="row">
+      <% @cards.completed.each do |card| %>
+        <%= render "cards/card", card: card %>
+      <% end %>
+    </div>
+  </div>
 </div>
