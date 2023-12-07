@@ -1,6 +1,6 @@
-class CustomRegistrationsController < Devise::RegistrationsController
+class UsersController < ApplicationController
   def create
-    @user = User.new(params)
+    @user = User.new(user_params)
     @user.password = 'password'
 
     if @user.save
@@ -11,5 +11,10 @@ class CustomRegistrationsController < Devise::RegistrationsController
     end
   end
 
-  # Other custom actions if needed
+  private
+
+
+  def user_params
+    params.require(:user).permit(:username, :email)
+  end
 end
