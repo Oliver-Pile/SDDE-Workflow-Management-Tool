@@ -3,9 +3,9 @@
       <div class="card-body">
         <h5 class="card-title"> 
         <%= project.title %>
-        <%= link_to icon('fa-solid', 'pen-to-square'), edit_project_path(project) %>
+        <span class="mx-2"> <%= link_to icon('fa-solid', 'pen-to-square'), edit_project_path(project) %> </span>
         </h5>
-      <div class="card-text">
+      <div class="card-text mb-2">
         <div> <%= project.description%> </div>
         <div> <strong>Department: </strong><%= project.department%> </div>
       </div>
