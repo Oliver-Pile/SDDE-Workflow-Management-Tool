@@ -8,8 +8,8 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-@user1 = User.create!(email: "a@a.co", password: "password", username: "TheBestUser")
-@user2 = User.create(email: "b@b.co", password: "password", username: "AlsoPrettyGoodUser")
+@user1 = User.create!(email: "a@a.co", password: "password", username: "TheBestUser", role: "Admin")
+@user2 = User.create(email: "b@b.co", password: "password", username: "AlsoPrettyGoodUser", role: "Operator")
 
 @project_1 = Project.create(
   title: "The first project",
