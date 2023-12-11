@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_20_140049) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_11_142507) do
   create_table "cards", force: :cascade do |t|
     t.string "content"
     t.string "status"
@@ -31,6 +31,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_20_140049) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "description"
+    t.boolean "active", default: true
     t.index ["title"], name: "index_projects_on_title", unique: true
   end
 

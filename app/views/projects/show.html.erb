@@ -1,5 +1,6 @@
 
 <header class="project-header"> 
+  <h2 class="text-danger"> <%= if !@project.active then "This project is archived" end %> </h2>
   <h2> <%= @project.title %> </h2>
   <div class="project-links">
     <%= link_to "Add Card", new_project_card_path(@project), class: "btn btn-primary m-2"%>

@@ -5,4 +5,7 @@ class Project < ApplicationRecord
   validates :description, presence: true, length: { maximum: 500 }
   validates :department, presence: true
   has_many :cards, dependent: :destroy
+
+
+  scope :active, -> { where(active: true) }
 end

@@ -45,9 +45,9 @@ class ProjectsController < ApplicationController
 
   # DELETE /projects/1
   def destroy
-    @project.destroy!
-    flash[:danger] = 'Project was successfully deleted'
-   redirect_to projects_url
+    @project.update(active: false)
+    flash[:danger] = 'Project was successfully archived'
+    redirect_to projects_url
   end
 
   private

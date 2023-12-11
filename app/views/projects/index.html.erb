@@ -8,7 +8,7 @@
 
 <div id="projects">
     <div class="row">
-      <% @projects.each do |project| %>
+      <% @projects.active.each do |project| %>
         <%= render project %>
       <% end %>
     </div>
