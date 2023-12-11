@@ -20,17 +20,17 @@
 
 
         <div>
-          <%= form.label :email, style: "display: block" %>
-          <%= form.text_field :email %>
+          <%= form.label :email, class: "form-label" %>
+          <%= form.text_field :email, class: "form-control" %>
         </div>
 
         <div>
-          <%= form.label :username, style: "display: block" %>
-          <%= form.text_field :username %>
+          <%= form.label :username, class: "form-label" %>
+          <%= form.text_field :username, class: "form-control" %>
         </div>
       </div>
       <div class="modal-footer">
-        <button type="submit" class="btn btn-primary">Add</button>
+        <button type="submit" class="btn btn-success">Add</button>
       </div>
     <% end %>
     </div>
