@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   root "projects#index"
   resources :projects do
     resources :cards
+    resources :report, only: [:index]
   end
 
   resources :manage_users

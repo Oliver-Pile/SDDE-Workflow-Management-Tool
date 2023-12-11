@@ -1,0 +1,12 @@
+<header class="project-header"> 
+  <h2> Project Report </h2>
+  <div class="project-links">
+    <%= link_to "Back to project", project_path(@project), class: "btn btn-primary m-2" %>
+  </div>
+</header>
+
+<div>
+  <h3> Total Cards: <%= @cards.count %> </h3>
+  <h3> Completed Cards: <%= @cards.completed.count %>/<%= @cards.count %> </h3>
+  <h3> Current Users: <%= users_for_cards(@cards).join(", ") %> </h3>
+</div>
