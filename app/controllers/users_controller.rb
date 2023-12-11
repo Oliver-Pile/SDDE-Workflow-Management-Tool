@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  before_action :check_user_admin
 
   def create
     @user = User.new(user_params)
@@ -16,6 +17,12 @@ class UsersController < ApplicationController
 
   private
 
+  def check_user_admin
+    if current_user.role != "Admin"
+      flash[:danger] = "User is not authorised to access this page"
+      redirect_to root_path
+    end
+  end
 
   def user_params
     params.require(:user).permit(:username, :email, :role)
