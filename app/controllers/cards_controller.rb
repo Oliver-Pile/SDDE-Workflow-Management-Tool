@@ -1,5 +1,6 @@
 class CardsController < ApplicationController
   before_action :authenticate_user!
+  before_action :check_user_operator, only: [:new, :create, :edit, :update]
   before_action :set_project
   before_action :set_card, only: [:show, :edit, :update]
 
@@ -44,6 +45,13 @@ end
 
   def set_card
     @card = @project.cards.find(params[:id])
+  end
+
+  def check_user_operator
+    if current_user.role != "Operator"
+      flash[:danger] = "User is not authorised to manipulate Cards"
+      redirect_to root_path
+    end
   end
 
   def card_params

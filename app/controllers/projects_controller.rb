@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!
+  before_action :check_user_operator, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_project, only: %i[ show edit update destroy ]
 
   # GET /projects
@@ -54,6 +55,13 @@ class ProjectsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_project
       @project = Project.find(params[:id])
+    end
+
+    def check_user_operator
+      if current_user.role != "Operator"
+        flash[:danger] = "User is not authorised to manipulate Project"
+        redirect_to root_path
+      end
     end
 
     # Only allow a list of trusted parameters through.
