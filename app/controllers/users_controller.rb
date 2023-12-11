@@ -19,7 +19,7 @@ class UsersController < ApplicationController
 
   def check_user_admin
     if current_user.role != "Admin"
-      flash[:danger] = "User is not authorised to access this page"
+      flash[:danger] = "User is not authorised to manipulate Users"
       redirect_to root_path
     end
   end

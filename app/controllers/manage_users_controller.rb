@@ -1,6 +1,6 @@
 class ManageUsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :check_user_admin
+  before_action :check_user_role
 
   def index
     @users = User.all
@@ -9,8 +9,8 @@ class ManageUsersController < ApplicationController
 
   private
   
-  def check_user_admin
-    if current_user.role != "Admin"
+  def check_user_role
+    if current_user.role in ["Admin", "Observer"]
       flash[:danger] = "User is not authorised to access this page"
       redirect_to root_path
     end
