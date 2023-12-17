@@ -1,4 +1,4 @@
-Feature: Viewing Kanban
+Feature: Project
   Background:
     Given There is a project
     And   I am a user
@@ -17,5 +17,18 @@ Feature: Viewing Kanban
   Scenario: Editing a project
     Given I visit the project edit page
     When  I modify the project title
-    And   I click update submit
+    And   I click submit
     Then  I see the updated project title
+
+  Scenario: Creating a project
+    Given I visit the projects page 
+    And I click the add project button
+    When I fill in the add project form
+    And I click submit
+    Then I see the new project
+
+  Scenario: Archiving a project
+    Given I visit the project show page
+    When I click archive
+    Then I dont see the project
+    
