@@ -4,12 +4,12 @@ class User < ApplicationRecord
   devise :database_authenticatable,
   :recoverable, :rememberable, :validatable, :registerable
   
-  VALID_ROLE = ["Operator", "Observer", "Admin"]
+  VALID_ROLE = ["Operator", "Observer", "Admin", "Dev"]
 
   has_and_belongs_to_many :cards       
 
   validates :username, uniqueness: true, presence: true, format: { without: /[\W_]/ }
-  validates :role, presence: true, inclusion: { in: VALID_ROLE << "Dev"}
+  validates :role, presence: true, inclusion: { in: VALID_ROLE }
 
   def self.valid_roles
     VALID_ROLE

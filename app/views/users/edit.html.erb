@@ -1,0 +1,39 @@
+<header class="project-header"> 
+  <h1>Edit User</h1>
+  <div class="user-links">
+    <%= link_to "Back to Users", manage_users_path, class: "btn btn-primary m-2" %>
+  </div>
+</header>
+
+
+<%= form_with(model: @user) do |form| %>
+      <div class="modal-body">
+          <% if @user.errors.any? %>
+            <div style="color: red">
+              <h2><%= pluralize(@user.errors.count, "error") %> prohibited this project from being saved:</h2>
+              <ul>
+                <% @user.errors.each do |error| %>
+                  <li><%= error.full_message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+
+        <div>
+          <%= form.label :email, class: "form-label" %>
+          <%= form.text_field :email, class: "form-control" %>
+        </div>
+
+        <div>
+          <%= form.label :username, class: "form-label" %>
+          <%= form.text_field :username, class: "form-control" %>
+        </div>
+
+        <div>
+          <%= form.label :role, "Role", class: "form-label"  %>
+          <%= form.select :role, User.valid_roles, {}, class: "form-select" %>
+        </div>
+      </div>
+        <button type="submit" class="btn btn-success">Submit</button>
+    <% end %>

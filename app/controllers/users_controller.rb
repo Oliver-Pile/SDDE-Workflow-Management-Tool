@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :check_user_admin
+  before_action :set_user, only: [:edit, :update, :destroy]
 
   def create
     @user = User.new(user_params)
@@ -15,7 +16,34 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @user.update(user_params)
+      flash[:success] = 'User was successfully updated'
+      redirect_to manage_users_url
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    if current_user == @user
+      flash[:danger] = 'Warning: Cant delete current user'
+      redirect_to manage_users_url
+    else
+      @user.destroy
+      flash[:danger] = 'User was successfully deleted'
+      redirect_to manage_users_url
+    end
+  end
+
   private
+
+  def set_user
+    @user = User.find(params[:id])
+  end
 
   def check_user_admin
     if !current_user.role.in?(["Dev", "Admin"])

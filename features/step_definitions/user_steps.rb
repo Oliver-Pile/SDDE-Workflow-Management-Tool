@@ -20,7 +20,9 @@ Given("I click add user") do
 end
 
 Given("I select edit user") do
-  click_on "Edit" #Within?
+  within("tr#user-row-#{@primary_user.id}") do
+    click_on "Edit" #Within?
+  end
 end
 
 When('I login') do
@@ -42,10 +44,13 @@ end
 
 When("I fill in the edit users form") do
   fill_in 'Email', with: 'updated@example.com'
+  select 'Admin', from: 'Role' 
 end
 
 When("I select delete user") do
-  click_on 'Delete' #Within?
+  within("tr#user-row-#{@secondary_user.id}") do
+    click_on 'Delete'
+  end
 end
 
 Then('I see the login page') do
@@ -75,5 +80,5 @@ Then("I see the updated user") do
 end
 
 Then("I cant see the deleted user") do
-  expect(page).not_to have_content @primary_user.email
+  expect(page).not_to have_content @secondary_user.email
 end

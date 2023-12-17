@@ -13,14 +13,18 @@
     <th> Username </th>
     <th> Role </th>
     <th> Created at </th>
+    <th></th>
+    <th></th>
     </thead>
     <tbody>
     <% @users.each do |user| %>
-    <tr>
+    <tr id=<%= "user-row-#{user.id}" %>>
       <td> <%= user.email %> </td>
       <td> <%= user.username %> </td>
       <td> <%= user.role %> </td>
       <td> <%= user.created_at %> </td>
+      <td> <%= link_to "Edit", edit_user_path(user), class: "btn btn-primary m-2" %> </td>
+      <td> <%= button_to "Delete", user, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger m-2" %> </td>
     </tr>
     <% end %>
     </tbody>
