@@ -48,7 +48,7 @@ end
   end
 
   def check_user_operator
-    if current_user.role != "Operator"
+    if !current_user.role.in?(["Dev", "Operator"])
       flash[:danger] = "User is not authorised to manipulate Cards"
       redirect_to root_path
     end

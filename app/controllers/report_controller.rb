@@ -9,7 +9,7 @@ class ReportController < ApplicationController
 
   private
   def check_user_observer
-    if current_user.role != "Observer"
+    if !current_user.role.in?(["Dev", "Observer"])
       flash[:danger] = "User is not authorised to view Reports"
       redirect_to root_path
     end
