@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_and_belongs_to_many :cards       
 
   validates :username, uniqueness: true, presence: true, format: { without: /[\W_]/ }
-  validates :role, presence: true, inclusion: { in: VALID_ROLE}
+  validates :role, presence: true, inclusion: { in: VALID_ROLE << "Dev"}
 
   def self.valid_roles
     VALID_ROLE
