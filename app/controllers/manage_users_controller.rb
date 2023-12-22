@@ -7,6 +7,17 @@ class ManageUsersController < ApplicationController
     @user = User.new
   end
 
+  def destroy
+    @user = User.find(params[:id])
+    if current_user == @user
+      flash[:danger] = 'Warning: Cant delete current user'
+      redirect_to manage_users_url
+    else
+      @user.destroy
+      flash[:danger] = 'User was successfully deleted'
+      redirect_to manage_users_url
+    end
+  end
   private
   
   def check_user_role
