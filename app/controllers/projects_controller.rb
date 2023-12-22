@@ -10,7 +10,11 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1
   def show
-    @cards = @project.cards
+    if params[:user_only] == "true"
+      @cards = @project.cards.only_user(current_user)
+    else
+      @cards = @project.cards
+    end
   end
 
   # GET /projects/new
@@ -66,6 +70,6 @@ class ProjectsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def project_params
-      params.require(:project).permit(:title, :description, :department)
+      params.require(:project).permit(:title, :description, :department, :user_only)
     end
 end

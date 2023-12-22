@@ -41,6 +41,6 @@ Feature: Card
 
   Scenario:  Filtering cards
     Given I visit the project show page
-    When I click the only mine toggle
+    When I click only my cards
     Then I can see my cards
     And I cant see any other cards

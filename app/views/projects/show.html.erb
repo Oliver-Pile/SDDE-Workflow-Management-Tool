@@ -8,8 +8,10 @@
     <%= link_to "Add Card", new_project_card_path(@project), class: "btn btn-primary m-2"%>
     <%= link_to "Edit this project", edit_project_path(@project), class: "btn btn-primary m-2" %>
     <%= link_to "Back to projects", projects_path, class: "btn btn-primary m-2" %>
-      <%= link_to "View Report", project_report_index_path(@project), class: "btn btn-primary m-2" %>
+    <%= link_to "View Report", project_report_index_path(@project), class: "btn btn-primary m-2" %>
     <%= button_to "Archive this project", @project, method: :delete, class: "btn btn-danger m-2" %>
+    <%= link_to "Only my cards", { controller: 'projects', action: 'show', user_only: "true" }, class: "btn btn-secondary m-2" %>
+    <%= link_to "All Cards", { controller: 'projects', action: 'show', user_only: "false" }, class: "btn btn-secondary m-2" %>
   </div>
 </header>
 <div class>

@@ -9,6 +9,7 @@ class Card < ApplicationRecord
   scope :ready, -> { where(status: "Ready") }
   scope :in_progress, -> { where(status: "In Progress") }
   scope :completed, -> { where(status: "Completed") }
+  scope :only_user, -> (user) { joins(:users).where(users: { id: user.id }) }
 
   def self.valid_status 
     VALID_CARD_STATUS

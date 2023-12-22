@@ -33,8 +33,8 @@ When('I remove the assigned user') do
   select.unselect @primary_user.username
 end
 
-When('I click the only mine toggle') do
-  click_on "Show my cards only"
+When('I click only my cards') do
+  click_on "Only my cards"
 end
 
 Then('I see the cards content') do
